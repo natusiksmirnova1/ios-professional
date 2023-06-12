@@ -21,9 +21,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         style()
         layout()
+        
     }
 
-
+    
 }
 
 extension LoginViewController {
@@ -46,6 +47,7 @@ extension LoginViewController {
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         // add view to viewController
+        
         view.addSubview(loginView)
         view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
