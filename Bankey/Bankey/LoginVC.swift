@@ -3,7 +3,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LogoutDelegate: AnyObject {
+    func logOut()
+}
+
+protocol LoginVCDelegate: AnyObject {
+    func didLogin()
+}
+
+class LoginVC: UIViewController {
     
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
@@ -17,19 +25,27 @@ class LoginViewController: UIViewController {
         return loginView.passwordTF.text
     }
     
+    weak var delegate: LoginVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
         
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        signInButton.configuration?.showsActivityIndicator = false
+        loginView.nameTF.text = ""
+        loginView.passwordTF.text = ""
+        
+    }
     
 }
 
-extension LoginViewController {
+extension LoginVC {
     private func style() {
-     
         errorMessageLabel.isHidden = true
         errorMessageLabel.textColor = .systemRed
         errorMessageLabel.numberOfLines = 0
@@ -84,8 +100,11 @@ extension LoginViewController {
             return
         }
         
-        if nameGetted == "Kevin" && passwordGetted == "123" {
+        if nameGetted == "1" && passwordGetted == "1" {
+            
             signInButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
+            print("logged")
         } else {
             configureMessage(withMessage: "Incorrect password or user name")
         }

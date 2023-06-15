@@ -82,7 +82,7 @@ extension LoginView: UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("ok")
+        print("textFieldDidEndEditing")
     }
  }
 

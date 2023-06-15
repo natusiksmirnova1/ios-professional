@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController{
+class OnboardingVC: UIViewController{
     
     let stackView = UIStackView()
     let imageView = UIImageView()
@@ -36,7 +36,7 @@ class OnboardingViewController: UIViewController{
     
 }
 
-extension OnboardingViewController {
+extension OnboardingVC {
     
     func style(){
         view.backgroundColor = .systemBackground
